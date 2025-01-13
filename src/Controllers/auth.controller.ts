@@ -35,7 +35,7 @@ export const register = async (req: Request, res: Response) => {
       sameSite: "none",
     });
 
-    res.json({
+    return res.json({
       userId: newUser.id,
       usermane: newUser.username,
     });
