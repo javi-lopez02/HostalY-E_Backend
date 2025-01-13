@@ -1,20 +1,43 @@
 import express from "express";
+import cors from "cors";
+import morgan from "morgan";
+import cookieParser from "cookie-parser";
+import * as dotenv from "dotenv";
+import path from "path";
+import login from "./Routes/auth.routes";
+import oferts from "./Routes/oferts.routes";
+import gastronomic from "./Routes/gastronomic.routes";
+import desserts from "./Routes/desserts.routes";
+import events from "./Routes/events.routes";
+import gallery from "./Routes/gallery,routes";
+import snacks from "./Routes/snacks.routes";
+import drinks from "./Routes/drinks.routes";
+import users from "./Routes/user.routes"
+
+dotenv.config();
 
 const app = express();
-const port = process.env.PORT || 8080;
+const port = 4000;
 
-app.get("/", (req, res) => {
-  res.send("Express Typescript en Vercel");
-});
+app.use(
+  cors({
+    origin: [
+      "http://localhost:4173",
+      "http://localhost:5173",
+      "http://localhost:5174",
+    ],
+    credentials: true,
+  })
+);
+app.use(express.json());
+app.use(morgan("dev"));
+app.use(cookieParser());
 
-app.get("/ping", (req, res) => {
-  res.send("pong 🏓");
-});
+app.use("/api/auth", login);
+app.use("/api", oferts, gastronomic, gallery, snacks, events, desserts, drinks, users);
 
-app.listen(port, (err?: Error) => {
-  if (err) {
-    console.error("No se pudo iniciar el servidor:", err);
-  } else {
-    console.log(`El servidor está escuchando en el puerto ${port}`);
-  }
+app.use("/public", express.static(path.join(__dirname, "/upload")));
+
+app.listen(port, () => {
+  console.log(`Server on port ${port}`);
 });
