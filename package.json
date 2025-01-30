@@ -4,8 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "nodemon src/index.ts",
-    "build": "rimraf dist && tsc",
+    "start": "node public/index.js",
+    "build": "tsc",
     "ts.check": "tsc --project tsconfig.json",
     "add-build": "git add dist",
     "test": "echo \"Error: no test specified\" && exit 1",
@@ -15,11 +15,6 @@
     "add-drinks": "ts-node-dev src/Data/adddrinks.ts",
     "add-images": "ts-node-dev src/Data/addimages.ts"
   },
-  "pre-commit": [
-    "ts.check",
-    "build",
-    "add-build"
-  ],
   "keywords": [],
   "author": "",
   "license": "ISC",
