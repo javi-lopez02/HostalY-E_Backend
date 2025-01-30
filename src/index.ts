@@ -29,8 +29,10 @@ const port = 4000;
 //     credentials: true,
 //   })
 // );
-app.use(cors({ origin: 'https://hostal-y-e-frontend.vercel.app' }));
-
+app.use(cors({
+  origin: 'https://hostal-y-e-frontend.vercel.app',  // Especifica el frontend permitido
+  credentials: true  // Permitir cookies, tokens u otras credenciales
+}));
 app.use(express.json());
 app.use(morgan("dev"));
 app.use(cookieParser());
