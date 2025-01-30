@@ -17,18 +17,20 @@ dotenv.config();
 const app = express();
 const port = 4000;
 
-app.use(
-  cors({
-    origin: [
-      "http://localhost:4173",
-      "http://localhost:5173",
-      "http://localhost:5174",
-      "https://hostal-y-e-frontend.vercel.app/",
-      "https://hostal-y-e-admin.vercel.app/"
-    ],
-    credentials: true,
-  })
-);
+// app.use(
+//   cors({
+//     origin: [
+//       "http://localhost:4173",
+//       "http://localhost:5173",
+//       "http://localhost:5174",
+//       "https://hostal-y-e-frontend.vercel.app/",
+//       "https://hostal-y-e-admin.vercel.app/"
+//     ],
+//     credentials: true,
+//   })
+// );
+app.use(cors({ origin: 'https://hostal-y-e-frontend.vercel.app' }));
+
 app.use(express.json());
 app.use(morgan("dev"));
 app.use(cookieParser());
