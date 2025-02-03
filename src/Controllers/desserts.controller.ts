@@ -10,7 +10,7 @@ export const getDesserts = async (req: Request, res: Response) => {
         id: true,
         price: true,
         imagen: true,
-        name: true,
+        description: true,
         createdAt: true,
       },
     });
@@ -28,13 +28,13 @@ export const getDesserts = async (req: Request, res: Response) => {
 };
 
 export const createDessert = async (req: Request, res: Response) => {
-  const { price, imagen, name } = req.body;
+  const { price, imagen, description } = req.body;
   try {
     const dessert = await prisma.desserts.create({
       data: {
         price,
         imagen,
-        name,
+        description,
       },
     });
 
@@ -51,7 +51,7 @@ export const createDessert = async (req: Request, res: Response) => {
 };
 
 export const editDessert = async (req: Request, res: Response) => {
-  const { price, imagen, name } = req.body;
+  const { price, imagen, description } = req.body;
   const { id } = req.params;
 
   try {
@@ -60,7 +60,7 @@ export const editDessert = async (req: Request, res: Response) => {
       data: {
         price,
         imagen,
-        name,
+        description,
       },
     });
 

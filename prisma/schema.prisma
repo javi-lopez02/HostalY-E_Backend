@@ -6,9 +6,8 @@ generator client {
 }
 
 datasource db {
-  provider  = "postgresql"
-  url       = env("DATABASE_URL")
-  directUrl = env("DIRECT_URL")
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
 }
 
 model User {
@@ -20,6 +19,7 @@ model User {
   role      Role     @default(USER)
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
+  Order     Order[]
 }
 
 enum Role {
@@ -28,29 +28,32 @@ enum Role {
 }
 
 model Ofert {
-  id          String   @id @default(uuid())
+  id          String      @id @default(uuid())
   description String
   price       Float
-  createdAt   DateTime @default(now())
-  updatedAt   DateTime @updatedAt
+  createdAt   DateTime    @default(now())
+  updatedAt   DateTime    @updatedAt
+  OrderItem   OrderItem[]
 }
 
 model Gastronomic {
-  id          String   @id @default(uuid())
+  id          String      @id @default(uuid())
   description String
   price       Float
   imagen      String?
-  createdAt   DateTime @default(now())
-  updatedAt   DateTime @updatedAt
+  createdAt   DateTime    @default(now())
+  updatedAt   DateTime    @updatedAt
+  OrderItem   OrderItem[]
 }
 
 model Desserts {
-  id        String   @id @default(uuid())
-  name      String
-  price     Float
-  imagen    String?
-  createdAt DateTime @default(now())
-  updatedAt DateTime @updatedAt
+  id          String      @id @default(uuid())
+  description String
+  price       Float
+  imagen      String?
+  createdAt   DateTime    @default(now())
+  updatedAt   DateTime    @updatedAt
+  OrderItem   OrderItem[]
 }
 
 model Drinks {
@@ -85,4 +88,29 @@ model Events {
   description String
   createdAt   DateTime @default(now())
   updatedAt   DateTime @updatedAt
+}
+
+model Order {
+  id          String      @id @default(uuid())
+  userId      String
+  user        User        @relation(fields: [userId], references: [id])
+  orderItems  OrderItem[]
+  totalAmount Float       @default(0)
+  pending     Boolean     @default(true)
+  createdAt   DateTime    @default(now())
+}
+
+model OrderItem {
+  id            String       @id @default(uuid())
+  orderId       String
+  order         Order        @relation(fields: [orderId], references: [id])
+  ofertId       String?
+  gastronomicId String?
+  dessertId     String?
+  ofert         Ofert?       @relation(fields: [ofertId], references: [id])
+  gastronomic   Gastronomic? @relation(fields: [gastronomicId], references: [id])
+  dessert       Desserts?    @relation(fields: [dessertId], references: [id])
+  quantity      Int
+  price         Float
+  createdAt     DateTime     @default(now())
 }

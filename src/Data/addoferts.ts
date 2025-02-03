@@ -131,57 +131,57 @@ async function main() {
 
   const dessertsData = [
     {
-      name: "Panquecitos",
+      description: "Panquecitos",
       imagen:
         "https://i.pinimg.com/236x/9e/c4/f8/9ec4f835c10bdab5768d53289e89175e.jpg",
       price: 1800,
     },
     {
-      name: "Emp. de Guayaba",
+      description: "Emp. de Guayaba",
       imagen:
         "https://i.pinimg.com/236x/9f/b7/a3/9fb7a3fc7c36395fd49cec2a8c165143.jpg",
       price: 1800,
     },
     {
-      name: "Emp. de Coco",
+      description: "Emp. de Coco",
       imagen:
         "https://i.pinimg.com/236x/42/5b/66/425b6646337129682be8fc4fbd919044.jpg",
       price: 2100,
     },
     {
-      name: "Gelatina",
+      description: "Gelatina",
       price: 3000,
       imagen: "https://rent-house-six.vercel.app/images/postres/gelatina.jpg",
     },
     {
-      name: "Natilla",
+      description: "Natilla",
       price: 3000,
       imagen:
         "https://i.pinimg.com/236x/5a/9a/3a/5a9a3a8ee9be117a5ad8d940e1ca9227.jpg",
     },
     {
-      name: "NatiFlan",
+      description: "NatiFlan",
       price: 3000,
       imagen: "https://rent-house-six.vercel.app/images/postres/flan.jpg",
     },
     {
-      name: "Arroz con Leche",
+      description: "Arroz con Leche",
       price: 5000,
       imagen:
         "https://i.pinimg.com/236x/8b/7e/02/8b7e02c7d140f26cb34c505aadd8205c.jpg",
     },
     {
-      name: "Helado",
+      description: "Helado",
       price: 6000,
       imagen: "https://rent-house-six.vercel.app/images/postres/helado.jpg",
     },
     {
-      name: "Pudín",
+      description: "Pudín",
       price: 10000,
       imagen: "https://rent-house-six.vercel.app/images/postres/pudin.jpg",
     },
     {
-      name: "Ensalada Fría",
+      description: "Ensalada Fría",
       price: 10000,
       imagen:
         "https://i.pinimg.com/236x/be/95/df/be95dfde5ec959e81d7184d48dad7e39.jpg",
