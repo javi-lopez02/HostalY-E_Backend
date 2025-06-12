@@ -26,10 +26,13 @@ app.use(
       "http://localhost:4173",
       "http://localhost:5173",
       "http://localhost:5174",
+      "https://hostal-y-e-frontend.vercel.app",
+      "https://hostal-y-e-admin.vercel.app"
     ],
     credentials: true,
   })
 );
+
 app.use(express.json());
 app.use(morgan("dev"));
 app.use(cookieParser());
